@@ -21,7 +21,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $parameters->set(Option::SETS, [
         // run and fix, one by one
-//         SetList::SPACES,
+        // SetList::SPACES,
         // SetList::ARRAY,
         // SetList::DOCBLOCK,
          SetList::NAMESPACES,
