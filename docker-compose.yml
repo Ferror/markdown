@@ -1,7 +1,7 @@
 services:
     symfony-package:
         container_name: "symfony-package"
-        image: ferror/symfony-image
+        image: ferror/symfony-cli-image
         command: ["make", "run"]
         volumes:
             - ./:/app:delegated
