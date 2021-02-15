@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Ferror\SymfonyPackage;
 
+use Ferror\SymfonyPackage\Header\Factory as HeaderFactory;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -12,7 +13,7 @@ final class FactoryTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->factory = new Factory();
+        $this->factory = new Factory(new HeaderFactory());
         parent::setUp();
     }
 
@@ -20,16 +21,14 @@ final class FactoryTest extends TestCase
     {
         self::assertInstanceOf(Header::class, $this->factory->create('# Top Level Header'));
         self::assertInstanceOf(Header::class, $this->factory->create('## Second Level Header'));
+        self::assertInstanceOf(Header::class, $this->factory->create('### Level Header'));
+        self::assertInstanceOf(Header::class, $this->factory->create('#### Level Header'));
+        self::assertInstanceOf(Header::class, $this->factory->create('##### Level Header'));
+        self::assertInstanceOf(Header::class, $this->factory->create('###### Level Header'));
     }
 
     public function testItIsList(): void
     {
         self::assertInstanceOf(Lists::class, $this->factory->create('* Item'));
-    }
-
-    public function testItCannotConvertString(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->factory->create('$$');
     }
 }
