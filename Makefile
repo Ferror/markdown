@@ -1,4 +1,5 @@
 ci:
+	composer validate
 	./vendor/bin/phpunit tests --colors=always
 	./vendor/bin/ecs check
 fix:
