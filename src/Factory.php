@@ -3,10 +3,15 @@ declare(strict_types=1);
 
 namespace Ferror\SymfonyPackage;
 
-use InvalidArgumentException;
-
 final class Factory
 {
+    private Header\Factory $factory;
+
+    public function __construct(Header\Factory $factory)
+    {
+        $this->factory = $factory;
+    }
+
     public function create(string $message): Element
     {
         if ($this->str_starts_with($message, '*')) {
@@ -14,10 +19,10 @@ final class Factory
         }
 
         if ($this->str_starts_with($message, '#')) {
-            return new Header($message);
+            return $this->factory->create($message);
         }
 
-        throw new InvalidArgumentException('Could not convert message: ' . $message);
+        return new Paragraph($message);
     }
 
     //Change this function to str_starts_with in PHP 8.0

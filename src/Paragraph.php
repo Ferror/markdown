@@ -5,22 +5,19 @@ namespace Ferror\SymfonyPackage;
 
 use JsonSerializable;
 
-final class Header implements Element, JsonSerializable
+final class Paragraph implements Element, JsonSerializable
 {
     private string $content;
-    private int $level;
 
-    public function __construct(int $level, string $content)
+    public function __construct(string $content)
     {
         $this->content = $content;
-        $this->level = $level;
     }
 
     public function jsonSerialize(): array
     {
         return [
-            'type' => 'header',
-            'level' => $this->level,
+            'type' => 'paragraph',
             'content' => $this->content,
         ];
     }
