@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Ferror\SymfonyPackage;
 
 use Ferror\SymfonyPackage\Header\Factory as HeaderFactory;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 final class FactoryTest extends TestCase
