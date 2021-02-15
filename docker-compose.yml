@@ -1,6 +1,6 @@
 services:
-    symfony-package:
-        container_name: "symfony-package"
+    markdown:
+        container_name: "markdown"
         image: ferror/symfony-cli-image
         command: ["make", "run"]
         volumes:
